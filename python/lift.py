@@ -8,6 +8,19 @@ class Direction(Enum):
     DOWN = 1
 
 
+class Lift:
+
+    def __init__(self, id, floor, doors_open=False, requested_floors=None):
+        self.id = id
+        self.floor = floor
+        self.doors_open = doors_open
+        self.requested_floors = list(requested_floors) if requested_floors else []
+
+    def tick(self):
+        # TODO: implement this method
+        pass
+
+
 class LiftSystem:
     def __init__(self, floors=None, calls=None, lifts=None):
         self.floors = list(floors) if floors else []
@@ -20,17 +33,9 @@ class LiftSystem:
     def calls_for(self, floor):
         return [c for c in self.calls if c.floor == floor]
 
-    def lifts_on_floor(self, floor):
-        return [l for l in self.lifts if l.floor == floor]
-
-
-class Lift:
-
-    def __init__(self, id, floor, doors_open=False, requested_floors=None):
-        self.id = id
-        self.floor = floor
-        self.requested_floors = list(requested_floors) if requested_floors else []
-        self.doors_open = doors_open
+    def tick(self):
+        # TODO: implement this method
+        pass
 
 
 @dataclass

@@ -33,7 +33,7 @@ def test_several_lifts_with_requests_and_calls():
     liftA = Lift("A", floor=3)
     liftA.requested_floors = [0]
     liftB = Lift("B", floor=2)
-    liftC = Lift("C", floor=2)
+    liftC = Lift("C", floor=2, doors_open=True)
     lift_system = LiftSystem(floors=[0, 1, 2, 3], lifts=[liftA, liftB, liftC], calls=[Call(1, Direction.DOWN)])
     verify(print_lifts(lift_system))
 
