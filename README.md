@@ -3,6 +3,25 @@ Lift Kata
 
 This repo has a starting position for doing the Lift Kata with an Approval testing approach. It includes a printer which can print a lift system using ASCII art. There is only enough of an implementation to support this. Your job is to implement the rest of the software so the lifts can move.
 
+Deciphering the ASCII Art
+-------------------------
+
+A this is a sample printout from the lift printer:
+
+	 3    [A]          3
+	 2        [B] ]C[  2
+	 1 v               1
+	 0     *           0
+
+This information may help you to understand it:
+
+- Each line corresponds to a floor. There are four floors numbered 0,1,2,3.
+- There are three lifts, named 'A', 'B', 'C'.
+- Lift 'C' has the doors open, the other two have their doors closed.
+- Lift 'A' has a request for floor 0, which is marked with a *.
+- There is a call on floor 1 to go down.
+
+
 Lift Kata Description
 ---------------------
 
@@ -29,12 +48,13 @@ The starting code has a Lift class with basic attributes like a floor, requests 
 When you have a single lift working well, you may want to tackle these further features: 
 
 - there can be more than one lift.
-- only one lift need answer each call.
+- only one lift needs to respond to each call.
 - on each floor there is a monitor above each lift door. While the lift is moving it shows which floor it is on.
 - when the lift stops at a floor to answer a call, the monitor shows which direction it will go in.
 - when fulfilling a call, the relevant lift makes a 'DING' as it opens the doors.
 
-Note: the printer will need to be extended if you want it to show the lift monitor and the ding.
+Note: the printer does not currently show the lift monitor and the ding.
+
 
 Acknowldgements
 ---------------
