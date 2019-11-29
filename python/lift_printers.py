@@ -2,47 +2,77 @@ from lift import Direction
 
 
 def print_lifts(lift_system):
+    """
+    Prints the state of a LiftSystem using ASCII art.
+    """
     r = ""
-    for floor in lift_system.reverse_order_floors():
-        calls = "".join([print_call(call) for call in (lift_system.calls_for(floor))])
-        # add whitespace padding to make room for two calls, one up, one down
-        call_padding = whitespace(2-len(calls))
+    floor_number_length = _calculate_floor_number_length(lift_system.floors)
+    for floor in reversed(lift_system.floors):
+        calls = "".join([print_call_direction(call) for call in (lift_system.calls_for(floor))])
+        # if there are less than 2 calls on a floor we add padding to keep everything aligned
+        call_padding = _whitespace(2 - len(calls))
+
         lifts = " ".join([print_lift_for_floor(lift, floor) for lift in lift_system.lifts])
-        # add whitespace padding to make room for floors numbered from -9 to 99
-        floor_padding = whitespace(2 - len(str(floor)))
+
+        # if the floor number doesn't use all the characters, pad with whitespace
+        floor_padding = _whitespace(floor_number_length - len(str(floor)))
+
         # put the floor number at both ends of the line to make it more readable when there are lots of lifts,
-        # and to prevent the IDE from doing rstrip on save and messing up the approval tests
+        # and to prevent the IDE from doing rstrip on save and messing up the approved files.
         r += f"{floor_padding}{floor} {calls}{call_padding} {lifts} {floor_padding}{floor}\n"
 
     return r
 
 
+def _calculate_floor_number_length(floors):
+    if not floors:
+        raise ValueError("Must have at least one floor")
+    lowest_floor = min(floors)
+    highest_floor = max(floors)
+    if lowest_floor >= 0 and highest_floor < 10:
+        return 1
+    if lowest_floor >= -9 and highest_floor < 100:
+        return 2
+    if lowest_floor >= -99 and highest_floor < 1000:
+        return 3
+    raise ValueError("You have an unreasonably large number of floors, it will be too hard to print.")
+
+
 def print_lift_for_floor(lift, floor):
+    "Print information about a lift for a particular floor, including the position of the lift and requested floors."
     if lift.floor == floor:
-        return print_lift(lift)
+        lift_str = print_lift(lift)
     else:
+        padding = _whitespace(len(lift.id))
         if floor in lift.requested_floors:
-            return " * "
+            lift_str = f" *{padding}"
         else:
-            return whitespace(3)
+            lift_str = f" {padding} "
+    return lift_str
 
 
 def print_lift(lift):
+    "Print information about a lift, including door status"
     if lift.doors_open:
         return f"]{lift.id}["
     else:
         return f"[{lift.id}]"
 
 
-def print_call(call):
-    direction = "^"
+def print_call_direction(call):
+    "Print information about the direction of a Call"
     if call.direction == Direction.DOWN:
-        direction = "v"
-    return f"{direction}"
+        return "v"
+    elif call.direction == Direction.UP:
+        return "^"
+    else:
+        # should be unreachable
+        return " "
 
 
-def whitespace(size):
+def _whitespace(length):
+    "Return a string of whitespace with the requested length"
     w = ""
-    for i in range(size):
+    for i in range(length):
         w += " "
     return w
