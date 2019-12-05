@@ -29,13 +29,8 @@ def _calculate_floor_number_length(floors):
         raise ValueError("Must have at least one floor")
     lowest_floor = min(floors)
     highest_floor = max(floors)
-    if lowest_floor >= 0 and highest_floor < 10:
-        return 1
-    if lowest_floor >= -9 and highest_floor < 100:
-        return 2
-    if lowest_floor >= -99 and highest_floor < 1000:
-        return 3
-    raise ValueError("You have an unreasonably large number of floors, it will be too hard to print.")
+    longest_floor_name = max(str(lowest_floor), str(highest_floor))
+    return len(longest_floor_name)
 
 
 def print_lift_for_floor(lift, floor):
@@ -47,7 +42,7 @@ def print_lift_for_floor(lift, floor):
         if floor in lift.requested_floors:
             lift_str = f" *{padding}"
         else:
-            lift_str = f" {padding} "
+            lift_str = f"  {padding}"
     return lift_str
 
 
@@ -72,7 +67,4 @@ def print_call_direction(call):
 
 def _whitespace(length):
     "Return a string of whitespace with the requested length"
-    w = ""
-    for i in range(length):
-        w += " "
-    return w
+    return " "*length
