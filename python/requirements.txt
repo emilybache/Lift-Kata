@@ -1,0 +1,4 @@
+approvaltests==0.2.6
+attrs==19.3.0
+pytest==5.3.1
+pytest-approvaltests==0.1.0
