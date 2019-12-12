@@ -36,22 +36,25 @@ def _calculate_floor_number_length(floors):
 def print_lift_for_floor(lift, floor):
     "Print information about a lift for a particular floor, including the position of the lift and requested floors."
     if lift.floor == floor:
-        lift_str = print_lift(lift)
+        lift_str = print_lift(lift, floor)
     else:
         padding = _whitespace(len(lift.id))
         if floor in lift.requested_floors:
-            lift_str = f" *{padding}"
+            lift_str = f"  *{padding}"
         else:
-            lift_str = f"  {padding}"
+            lift_str = f"   {padding}"
     return lift_str
 
 
-def print_lift(lift):
+def print_lift(lift, floor):
     "Print information about a lift, including door status"
     if lift.doors_open:
-        return f"]{lift.id}["
+        return f" ]{lift.id}["
     else:
-        return f"[{lift.id}]"
+        if floor in lift.requested_floors:
+            return f"[*{lift.id}]"
+        else:
+            return f" [{lift.id}]"
 
 
 def print_call_direction(call):

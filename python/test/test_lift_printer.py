@@ -13,7 +13,7 @@ def test_large_lift_system():
     liftA = Lift("A", floor=0, requested_floors=[3,5,7])
     liftB = Lift("B", floor=2, doors_open=True)
     liftC = Lift("C", floor=-2)
-    liftC.requested_floors = [0]
+    liftC.requested_floors = [-2, 0]
     liftD = Lift("D", floor=8, doors_open=True)
     liftD.requested_floors = [0, -1, -2]
     liftSVC = Lift("SVC", floor=10)
