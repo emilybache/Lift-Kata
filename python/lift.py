@@ -20,14 +20,14 @@ class Lift:
         self.id = id
         self.floor = floor
         self.doors_open = doors_open
-        self.requested_floors = list(requested_floors) if requested_floors else []
+        self.requested_floors = set(requested_floors) if requested_floors else set()
 
 
 class LiftSystem:
-    def __init__(self, floors=None, calls=None, lifts=None):
+    def __init__(self, floors=None, lifts=None, calls=None):
         self.floors = list(floors) if floors else []
-        self.calls = list(calls) if calls else []
         self.lifts = list(lifts) if lifts else []
+        self.calls = list(calls) if calls else []
 
     def calls_for(self, floor):
         return [c for c in self.calls if c.floor == floor]
