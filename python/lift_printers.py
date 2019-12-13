@@ -49,7 +49,11 @@ def print_lift_for_floor(lift, floor):
 def print_lift(lift, floor):
     "Print information about a lift, including door status"
     if lift.doors_open:
-        return f" ]{lift.id}["
+        if floor in lift.requested_floors:
+            return f"]*{lift.id}["
+        else:
+            return f" ]{lift.id}["
+
     else:
         if floor in lift.requested_floors:
             return f"[*{lift.id}]"

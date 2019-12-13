@@ -9,6 +9,23 @@ def test_no_lifts():
     verify(print_lifts(lift_system))
 
 
+def test_sample_lift_system():
+    liftA = Lift("A", floor=3, requested_floors=[0])
+    liftB = Lift("B", floor=2)
+    liftC = Lift("C", floor=2, doors_open=True)
+    liftD = Lift("D", floor=0, requested_floors=[0])
+    lift_system = LiftSystem(floors=[0, 1, 2, 3],
+                             lifts=[liftA, liftB, liftC, liftD],
+                             calls=[Call(1, Direction.DOWN)])
+    verify(print_lifts(lift_system))
+
+
+def test_illegal_states():
+    liftA = Lift("A", floor=0, requested_floors=[0], doors_open=True)
+    lifts = LiftSystem(floors=[0, 1], lifts=[liftA])
+    verify(print_lifts(lifts))
+
+
 def test_large_lift_system():
     liftA = Lift("A", floor=0, requested_floors=[3,5,7])
     liftB = Lift("B", floor=2, doors_open=True)
