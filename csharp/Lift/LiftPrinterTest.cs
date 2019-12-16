@@ -45,5 +45,22 @@ namespace Lift
                 );
             Approvals.Verify(new LiftSystemPrinter().Print(liftSystem));
         }
+
+        [Fact]
+        public void LargeLiftSystem()
+        {
+            var liftA = new Lift("A", 3, new List<int>(){3,5,7}, false);
+            var liftB = new Lift("B", 2, true);
+            var liftC = new Lift("C", -2, new List<int>(){-2, 0}, false);
+            var liftD = new Lift("D", 8, new List<int>(){0, -1, -2}, true);
+            var liftSVC = new Lift("SVC", 10, new List<int>(){0, -1}, false);
+            var liftF = new Lift("F", 8,false);
+            LiftSystem liftSystem = new LiftSystem(
+                new List<int>(){-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
+                new List<Lift>(){liftA, liftB, liftC, liftD, liftSVC, liftF},
+                new List<Call>(){new Call(1, Direction.Down), new Call(6, Direction.Down), 
+                    new Call(5, Direction.Up), new Call(5, Direction.Down), new Call(-1, Direction.Up)});
+            Approvals.Verify(new LiftSystemPrinter().Print(liftSystem));
+        }
     }
 }
