@@ -15,6 +15,6 @@ public class LiftSystemTest {
         Lift liftA = new Lift("A", 0);
         LiftSystem lifts = new LiftSystem(Arrays.asList(0, 1), Collections.singletonList(liftA), Collections.emptyList());
         lifts.tick();
-        verify(new LiftSystemPrinter().printWithoutDoors(lifts));
+        verify(new LiftSystemPrinter().print(lifts));
     }
 }

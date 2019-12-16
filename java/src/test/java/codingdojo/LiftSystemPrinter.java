@@ -10,12 +10,12 @@ import static java.lang.String.*;
  * Prints the state of a LiftSystem using ASCII art.
  */
 public class LiftSystemPrinter {
-    public String printWithoutDoors(LiftSystem liftSystem) {
-        return this.print(liftSystem, new SimpleLiftPrinter());
-    }
-
     public String print(LiftSystem liftSystem) {
         return this.print(liftSystem, new LiftAndDoorPrinter());
+    }
+
+    public String printWithoutDoors(LiftSystem liftSystem) {
+        return this.print(liftSystem, new SimpleLiftPrinter());
     }
 
     public String print(LiftSystem liftSystem, LiftPrinter liftPrinter) {
