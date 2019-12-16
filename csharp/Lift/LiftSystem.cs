@@ -16,16 +16,16 @@ namespace Lift
             Calls = calls;
         }
 
-        public List<int> getFloorsInDescendingOrder()
+        public List<int> FloorsInDescendingOrder()
         {
-            var copy = new List<int>(this.Floors);
+            var copy = new List<int>(Floors);
             copy.Reverse();
             return copy;
         }
 
-        public List<Call> getCallsForFloor(int floor)
+        public IEnumerable<Call> CallsForFloor(int floor)
         {
-            return Calls.Where(c => c.Floor == floor).ToList();
+            return Calls.Where(c => c.Floor == floor);
         }
 
         

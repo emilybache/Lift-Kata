@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ApprovalTests.Core;
 
 namespace Lift
 {
@@ -9,14 +10,19 @@ namespace Lift
     {
         public string Print(LiftSystem liftSystem)
         {
-            return Print(liftSystem, new LiftPrinter());
+            return Print(liftSystem, new LiftAndDoorPrinter());
+        }
+
+        public string PrintWithoutDoors(LiftSystem liftSystem)
+        {
+            return Print(liftSystem, new SimpleLiftPrinter());
         }
 
         public string Print(LiftSystem liftSystem, LiftPrinter liftPrinter)
         {
             var sb = new StringBuilder();
-            var floorLength = CalculateFloorLength(liftSystem.getFloorsInDescendingOrder());
-            foreach (var floor in liftSystem.getFloorsInDescendingOrder())
+            var floorLength = CalculateFloorLength(liftSystem.FloorsInDescendingOrder());
+            foreach (var floor in liftSystem.FloorsInDescendingOrder())
             {
                 // if the floor number doesn't use all the characters, pad with whitespace
                 var floorPadding = GetWhitespace(floorLength - floor.ToString().Length);
@@ -24,7 +30,7 @@ namespace Lift
                 sb.Append(floor);
 
                 var calls = string.Join(" ",
-                    liftSystem.getCallsForFloor(floor).Select(PrintCallDirection));
+                    liftSystem.CallsForFloor(floor).Select(PrintCallDirection));
                 // if there are less than 2 calls on a floor we add padding to keep everything aligned
                 var callPadding = GetWhitespace(2 - calls.Length);
                 sb.Append(" ");
