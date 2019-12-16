@@ -28,6 +28,9 @@ namespace Lift
             return Calls.Where(c => c.Floor == floor);
         }
 
-        
+        public void Tick()
+        {
+            // TODO: Implement this method
+        }
     }
 }
