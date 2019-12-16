@@ -16,8 +16,19 @@ public class LiftPrinterTest {
         List<Lift> lifts = Collections.emptyList();
         List<Call> calls = Collections.emptyList();
         LiftSystem liftSystem = new LiftSystem(floors, lifts, calls);
-        verify(new LiftPrinter().print(liftSystem));
+        verify(new LiftSystemPrinter().print(liftSystem));
     }
+
+    @Test
+    void oneLiftNoDoors() {
+        Lift liftA = new Lift("A", 0, Arrays.asList(2,3));
+        LiftSystem liftSystem = new LiftSystem(
+                Arrays.asList(0, 1, 2, 3),
+                Collections.singletonList(liftA),
+                Collections.emptyList());
+        verify(new LiftSystemPrinter().printWithoutDoors(liftSystem));
+    }
+
 
     @Test
     void sampleLiftSystem() {
@@ -29,7 +40,7 @@ public class LiftPrinterTest {
                 Arrays.asList(0, 1, 2, 3),
                 Arrays.asList(liftA, liftB, liftC, liftD),
                 Collections.singletonList(new Call(1, Direction.DOWN)));
-        verify(new LiftPrinter().print(liftSystem));
+        verify(new LiftSystemPrinter().print(liftSystem));
     }
 
     @Test
@@ -44,7 +55,7 @@ public class LiftPrinterTest {
                 Arrays.asList(-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
                 Arrays.asList(liftA, liftB, liftC, liftD, liftSVC, liftF),
                 Arrays.asList(new Call(1, Direction.DOWN), new Call(6, Direction.DOWN), new Call(5, Direction.UP), new Call(5, Direction.DOWN), new Call(-1, Direction.UP)));
-        verify(new LiftPrinter().print(liftSystem));
+        verify(new LiftSystemPrinter().print(liftSystem));
     }
 
 }

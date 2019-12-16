@@ -22,6 +22,10 @@ public class Lift {
         this(id, floor, new ArrayList<Integer>(), false);
     }
 
+    public Lift(String id, int floor, List<Integer> requests) {
+        this(id, floor, requests, false);
+    }
+
     public Lift(String id, int floor, boolean doorsOpen) {
         this(id, floor, new ArrayList<Integer>(), doorsOpen);
     }
