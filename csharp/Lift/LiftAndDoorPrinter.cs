@@ -4,15 +4,15 @@ namespace Lift
 {
     public interface LiftPrinter
     {
-        string printLiftForFloor(Lift lift, int floor);
+        string PrintLiftForFloor(Lift lift, int floor);
     }
 
     public class LiftAndDoorPrinter : LiftPrinter
     {
-        public string printLiftForFloor(Lift lift, int floor)
+        public string PrintLiftForFloor(Lift lift, int floor)
         {
             if (lift.Floor == floor)
-                return printLift(lift, floor);
+                return PrintLift(lift, floor);
             else {
                 String padding = LiftSystemPrinter.GetWhitespace(lift.Id.Length);
                 if (lift.HasRequestForFloor(floor)) {
@@ -23,7 +23,7 @@ namespace Lift
             }
         }
 
-        private string printLift(Lift lift, int floor)
+        private string PrintLift(Lift lift, int floor)
         {
             if (lift.DoorsOpen) {
                 if (lift.HasRequestForFloor(floor)) {

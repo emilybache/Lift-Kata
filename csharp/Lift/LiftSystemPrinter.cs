@@ -40,7 +40,7 @@ namespace Lift
 
                 sb.Append(" ");
                 var lifts = string.Join(" ",
-                    liftSystem.Lifts.Select(l => liftPrinter.printLiftForFloor(l, floor)).ToList());
+                    liftSystem.Lifts.Select(l => liftPrinter.PrintLiftForFloor(l, floor)).ToList());
                 sb.Append(lifts);
 
                 // put the floor number at both ends of the line to make it more readable when there are lots of lifts,

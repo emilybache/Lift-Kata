@@ -2,10 +2,10 @@ namespace Lift
 {
     public class SimpleLiftPrinter : LiftPrinter
     {
-        public string printLiftForFloor(Lift lift, int floor)
+        public string PrintLiftForFloor(Lift lift, int floor)
         {
             if (lift.Floor == floor)
-                return printLift(lift, floor);
+                return PrintLift(lift, floor);
             var padding = LiftSystemPrinter.GetWhitespace(lift.Id.Length);
             if (lift.HasRequestForFloor(floor)) {
                 return "*" + padding;
@@ -14,7 +14,7 @@ namespace Lift
             return " " + padding;
         }
 
-        private string printLift(Lift lift, int floor)
+        private string PrintLift(Lift lift, int floor)
         {
             if (lift.HasRequestForFloor(floor)) {
                 return "*" + lift.Id;
