@@ -29,4 +29,8 @@ public class LiftSystem {
     public List<Lift> getLifts() {
         return lifts;
     }
+
+    public void tick() {
+        // TODO: implement this method
+    }
 }
