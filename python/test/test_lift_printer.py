@@ -1,12 +1,19 @@
 from approvaltests import verify
 
 from lift import LiftSystem, Lift, Direction, Call
-from lift_printers import print_lifts
+from lift_printers import print_lifts, SimpleLiftPrinter
 
 
 def test_no_lifts():
     lift_system = LiftSystem(floors=[0, 1, 2, 3])
     verify(print_lifts(lift_system))
+
+def test_no_doors():
+    liftA = Lift("A", floor=3, requested_floors=[0])
+    lift_system = LiftSystem(floors=[0, 1, 2, 3],
+                             lifts=[liftA],
+                             calls=[Call(1, Direction.DOWN)])
+    verify(print_lifts(lift_system, lift_printer=SimpleLiftPrinter()))
 
 
 def test_sample_lift_system():
