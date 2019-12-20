@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Lift {
     private final String id;
-    private final int floor;
-    private final List<Integer> requests;
+    private int floor;
+    private List<Integer> requests;
     private boolean doorsOpen;
 
     public Lift(String id, int floor, List<Integer> requests, boolean doorsOpen) {
