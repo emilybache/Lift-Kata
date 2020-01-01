@@ -16,15 +16,15 @@ LIST(APPEND CMAKE_MODULE_PATH
         )
 
 FetchContent_Declare(
-        approvaltests_header_only
+        approvaltests_ho
         URL https://github.com/approvals/ApprovalTests.cpp/releases/download/v.7.0.0/ApprovalTests.v.7.0.0.hpp
         DOWNLOAD_NO_EXTRACT TRUE
         DOWNLOAD_DIR ${CMAKE_CURRENT_BINARY_DIR}/approvaltests
         DOWNLOAD_NAME ApprovalTests.v.7.0.0.hpp
 )
-FetchContent_GetProperties(approvaltests_header_only)
-if (NOT approvaltests_header_only_POPULATED)
-    FetchContent_Populate(approvaltests_header_only)
+FetchContent_GetProperties(approvaltests_ho)
+if (NOT approvaltests_ho_POPULATED)
+    FetchContent_Populate(approvaltests_ho)
 endif ()
 add_library(approvaltests INTERFACE)
 target_include_directories(approvaltests
