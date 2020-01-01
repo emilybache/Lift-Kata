@@ -2,6 +2,7 @@
 // Created by Anders Arnholm on 2019-12-14.
 //
 
+#include <algorithm>
 #include <sstream>
 #include <iomanip>
 #include "lift.h"

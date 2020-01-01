@@ -1,4 +1,4 @@
 /build_meson/
-/subprojects/Catch2-2.5.0/
+/subprojects/Catch2-*/
 /subprojects/packagecache/
-/cmake-build-debug/
+/cmake-build-*/
