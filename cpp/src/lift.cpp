@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <sstream>
+#include <iterator>
 #include <iomanip>
 #include "lift.h"
 
