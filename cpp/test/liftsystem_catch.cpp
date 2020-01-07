@@ -1,7 +1,3 @@
-//
-// Created by Anders Arnholm on 2019-12-27.
-//
-
 #include "catch2/catch.hpp"
 #include "ApprovalTests.hpp"
 

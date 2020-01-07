@@ -1,7 +1,3 @@
-//
-// Created by Anders Arnholm on 2019-12-14.
-//
-
 #ifndef CPP_LIFT_H
 #define CPP_LIFT_H
 

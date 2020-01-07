@@ -1,7 +1,9 @@
 C++ version of Lift Kata
 ========================
 
-This is a C++ start of the ApprovalTest version of the Lift kata.
+This is a C++ start of the ApprovalTest version of the Lift kata. See
+the [top level readme](https://github.com/emilybache/Lift-Kata)
+ for a general description of the exercise.
 
 The source code is in src/, test cases in test/ the lift.cpp file
 contains a simple lift system print function. That returns a std::string
