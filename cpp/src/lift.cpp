@@ -4,10 +4,13 @@
 #include <iomanip>
 #include "lift.h"
 
+std::vector<int> reverse_order(const std::vector<int> &floors);
+
 std::string print_lifts(const LiftSystem &system) {
     std::stringstream buffer;
     size_t total_calls = system._calls.size();
-    for (auto floor : system._floors) {
+
+    for (auto floor : reverse_order(system._floors)) {
         std::set<Call> calls_for_floor;
         buffer << std::setw(3) << floor << std::setw(0) << " ";
         std::copy_if(system._calls.begin(),
@@ -41,4 +44,12 @@ std::string print_lifts(const LiftSystem &system) {
         buffer << std::setw(0) << "  " << std::setw(3) << floor << std::endl;
     }
     return buffer.str();
+}
+
+std::vector<int> reverse_order(const std::vector<int> &floors)
+{
+    std::vector<int> reversed_floors(floors);
+    std::sort (reversed_floors.begin(), reversed_floors.end());
+    std::reverse (reversed_floors.begin(), reversed_floors.end());
+    return reversed_floors;
 }
