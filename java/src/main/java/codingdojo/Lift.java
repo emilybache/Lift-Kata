@@ -45,4 +45,14 @@ public class Lift {
     public boolean areDoorsOpen() {
         return doorsOpen;
     }
+
+    public void requestFloor(int floor) {
+        // TODO: test for multiple requests to the same floor
+        requests.add(floor);
+    }
+
+    public void tick() {
+        int requestedFloor = requests.get(0);
+        this.floor = requestedFloor;
+    }
 }

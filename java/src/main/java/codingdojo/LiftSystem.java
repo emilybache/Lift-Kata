@@ -31,6 +31,9 @@ public class LiftSystem {
     }
 
     public void tick() {
-        // TODO: implement this method
+        // TODO: prevent space elavators
+        for (Lift lift : lifts) {
+            lift.tick();
+        }
     }
 }
