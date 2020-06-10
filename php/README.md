@@ -32,6 +32,12 @@ cd .\Lift-Kata\php
 composer install
 ```
 
+Run the tests:
+
+```shell script
+composer test
+```
+
 ## Dependencies
 
 The project uses composer to install:
@@ -44,13 +50,22 @@ The project uses composer to install:
 
 ## Folders
 
-- `src` - Contains the **#####** Class which needs to be tested and refactored.
+- `src` 
+    - Contains the **LiftSystem** Class which needs to be implemented.
+    - Also, the **Call**, **Direction** and **Lift** Classes.
 - `tests` 
-    - Contains **#####** which tests **#####**.
-    - it also contains **#####** Class is a basic implementation of the **S#####** interface, which
-     allows the tests to run.
-        - `approvals` - Contain the approved text files for each test method of ##### (these should not be
+    - **LiftPrinter** Class Interface 
+    - **LiftAndDoorPrinter** Class which implements the **LiftPrinter** Interface  
+    - **SimpleLiftPrinter** Class  which implements the **LiftPrinter** Interface 
+    - **LiftPrinterTest** Class uses the above printers and **ApprovalTests** to Test the **Lift**.
+    - **LiftSystemPrinter** Class is the main printer which outputs the ASCII art representation of the lift 
+    - **LiftSystemTest** Class is the boiler plate to test the **LiftSystem**  
+    - **CallTest** Class unit tests for **Call**
+    - **LiftTest** Class unit tests for **Lift**
+    - `approvals` 
+        - Contain the approved text files for each test method of **LiftPrinterTest** (these should not be
         changed)
+        - New approval files will need to be created to test the **LiftSystem**
 
 ## Testing
 
@@ -135,8 +150,7 @@ ps
 
 ## Approval Tests
 
-ApprovalTests.php can be used to compare the output of the **ReceiptPrinter**, see
- [ApprovalTests.PHP](https://github.com/approvals/ApprovalTests.php) for more information, or see the `with_tests`
-  branch for working examples.
+ApprovalTests.php can be used to compare the ASCII art output of the **LiftSystemTest**, there is already passing tests
+ for **LiftPrinterTest**, see [ApprovalTests.PHP](https://github.com/approvals/ApprovalTests.php) for more information.
 
 **Happy coding**!
