@@ -9,34 +9,34 @@ use PHPUnit\Framework\TestCase;
 
 class LiftTest extends TestCase
 {
-    public function testLiftHasIdFloorRequestsAndDoors()
+    public function testLiftHasIdFloorRequestsAndDoors(): void
     {
-        $lift = new Lift("A", 0, [2,3]);
+        $lift = new Lift('A', 0, [2, 3]);
 
-        $this->assertSame("A",$lift->getId());
-        $this->assertSame(0,$lift->getFloor());
+        $this->assertSame('A', $lift->getId());
+        $this->assertSame(0, $lift->getFloor());
         $this->assertFalse($lift->hasRequestForFloor(0));
         $this->assertFalse($lift->hasRequestForFloor(1));
         $this->assertTrue($lift->hasRequestForFloor(2));
         $this->assertTrue($lift->hasRequestForFloor(3));
         $this->assertFalse($lift->hasRequestForFloor(4));
-        $this->assertSame(false,$lift->areDoorsOpen());
+        $this->assertSame(false, $lift->areDoorsOpen());
     }
 
-    public function testLiftDoorsCanBeOpen()
+    public function testLiftDoorsCanBeOpen(): void
     {
-        $lift = new Lift("A", 0, [2,3], true);
+        $lift = new Lift('A', 0, [2, 3], true);
 
-        $this->assertSame(true,$lift->areDoorsOpen());
+        $this->assertSame(true, $lift->areDoorsOpen());
     }
 
-    public function testLiftDoorsCanHaveNoRequests()
+    public function testLiftDoorsCanHaveNoRequests(): void
     {
-        $lift = new Lift("A", 0);
+        $lift = new Lift('A', 0);
 
         $this->assertFalse($lift->hasRequestForFloor(0));
         $this->assertFalse($lift->hasRequestForFloor(1));
         $this->assertFalse($lift->hasRequestForFloor(2));
-        $this->assertSame(false,$lift->areDoorsOpen());
+        $this->assertSame(false, $lift->areDoorsOpen());
     }
 }

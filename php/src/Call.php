@@ -10,11 +10,11 @@ class Call
      * @var int
      */
     private $floor;
+
     /**
      * @var Direction
      */
     private $direction;
-
 
     public function __construct(int $floor, Direction $direction)
     {

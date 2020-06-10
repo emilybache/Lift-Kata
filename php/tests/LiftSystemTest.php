@@ -14,9 +14,9 @@ class LiftSystemTest extends TestCase
     // TODO: enable this test and finish writing it
     public function testDoSomething(): void
     {
-        $this->markTestSkipped('TODO');
+        $this->markTestSkipped('Enable this test and finish writing it');
         /** @var Lift $liftA */
-        $liftA = new Lift("A", 0);
+        $liftA = new Lift('A', 0);
 
         /** @var LiftSystem $lifts */
         $lifts = new LiftSystem([0, 1], [$liftA], []);

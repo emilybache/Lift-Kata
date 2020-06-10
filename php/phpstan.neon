@@ -13,17 +13,18 @@ parameters:
     # Larstan recommendation:
     checkMissingIterableValueType: false
 
-    # Ignore generic class Ds\Map
+
+    # Ignore generic class MyCLabs\Enum\Enum
     checkGenericClassInNonGenericObjectType: false
 
     ignoreErrors:
-        # Magic method is used is simulate enum
-        - '#Call to an undefined static method#'
-        -
-            message: '#PHPDoc tag @method has invalid value#'
-            paths:
-                - src\Model\SpecialOfferType.php
-                - src\Model\ProductUnit.php
+            # Magic method is used is simulate enum
+            - '#Call to an undefined static method#'
+            #-
+            -
+                message: '#PHPDoc tag @method has invalid value#'
+                path: src\Direction.php
+
     # buggy
 
     # mixed
@@ -31,5 +32,9 @@ parameters:
     # cache buggy
 
     # tests
+        # Starter code which needs to be implmented
+            -
+                message: '#Unreachable statement - code above always terminates#'
+                path: tests\LiftSystemTest.php
 
     # iterable

@@ -17,5 +17,6 @@ use MyCLabs\Enum\Enum;
 class Direction extends Enum
 {
     private const UP = 'up';
+
     private const DOWN = 'down';
 }

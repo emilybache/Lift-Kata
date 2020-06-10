@@ -7,21 +7,24 @@ namespace Lift;
 class Lift
 {
     /**
-     * @var String
+     * @var string
      */
-    private  $id;
+    private $id;
+
     /**
      * @var int
      */
-    private  $floor;
+    private $floor;
+
     /**
      * @var array
      */
     private $requests;
+
     /**
      * @var boolean
      */
-    private  $doorsOpen;
+    private $doorsOpen;
 
     public function __construct(string $id, int $floor, array $requests = [], bool $doorsOpen = false)
     {
@@ -46,7 +49,7 @@ class Lift
         return array_key_exists($floor, array_flip($this->requests));
     }
 
-    public function areDoorsOpen():bool
+    public function areDoorsOpen(): bool
     {
         return $this->doorsOpen;
     }

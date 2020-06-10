@@ -10,8 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class CallTest extends TestCase
 {
-
-    public function testGetDirectionAndFloor()
+    public function testGetDirectionAndFloor(): void
     {
         $call = new Call(0, Direction::UP());
 

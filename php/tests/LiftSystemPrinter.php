@@ -25,31 +25,45 @@ class LiftSystemPrinter implements LiftPrinter
         return $this->print($liftSystem, new SimpleLiftPrinter());
     }
 
-    private function print(LiftSystem $liftSystem, LiftPrinter $liftPrinter)
+    public function getWhitespace(int $length): string
+    {
+        return str_pad('', $length);
+    }
+
+    public function printLiftForFloor(Lift $lift, int $floor): string
+    {
+        // TODO: Implement printLiftForFloor() method.
+        return '';
+    }
+
+    private function print(LiftSystem $liftSystem, LiftPrinter $liftPrinter): string
     {
         $sb = '';
         $floorLength = $this->calculateFloorLength($liftSystem->getFloorsInDescendingOrder());
         foreach ($liftSystem->getFloorsInDescendingOrder() as $floor) {
             // if the floor number doesn't use all the characters, pad with whitespace
-            $floorPadding = $this->getWhitespace($floorLength - strlen((string)($floor)));
+            $floorPadding = $this->getWhitespace($floorLength - strlen((string) ($floor)));
             $sb .= $floorPadding;
             $sb .= (string) $floor;
 
-            $calls =  implode(array_map(function($call) {
+            $calls = implode(array_map(function ($call) {
                 return $this->printCallDirection($call);
             }, $liftSystem->getCallsForFloor($floor)));
 
             // if there are less than 2 calls on a floor we add padding to keep everything aligned
             $callPadding = $this->getWhitespace(2 - strlen($calls));
-            $sb .= " ";
+            $sb .= ' ';
             $sb .= $calls;
             $sb .= $callPadding;
-            $sb .= " ";
+            $sb .= ' ';
 
             // Add the lifts using the selected lift printer (with or without doors)
-            $sb .= implode(array_map(function($lift) use ($liftPrinter, $floor) {
-                return $liftPrinter->printLiftForFloor($lift, $floor);
-            }, $liftSystem->getLifts()), " ");
+            $sb .= implode(
+                array_map(function ($lift) use ($liftPrinter, $floor) {
+                    return $liftPrinter->printLiftForFloor($lift, $floor);
+                }, $liftSystem->getLifts()),
+                ' '
+            );
 
             // put the floor number at both ends of the line to make it more readable when there are lots of lifts,
             // and to prevent the IDE from doing rstrip on save and messing up the approved files.
@@ -57,7 +71,6 @@ class LiftSystemPrinter implements LiftPrinter
             $sb .= (string) $floor;
 
             $sb .= PHP_EOL;
-
         }
         return $sb;
     }
@@ -65,36 +78,25 @@ class LiftSystemPrinter implements LiftPrinter
     private function printCallDirection(Call $call): string
     {
         if ($call->getDirection()->equals(Direction::DOWN())) {
-            return "v";
+            return 'v';
         }
 
         if ($call->getDirection()->equals(Direction::UP())) {
-            return "^";
+            return '^';
         }
-        return " "; // should be unreachable
+        return ' '; // should be unreachable
     }
 
-    public function getWhitespace(int $length): string
+    private function calculateFloorLength(array $floors): int
     {
-        return str_pad("", $length);
-    }
-
-    private function calculateFloorLength(array $floors)
-    {
-        if (!count($floors)) {
-            throw new InvalidArgumentException("Must have at least one floor");
+        if (! count($floors)) {
+            throw new InvalidArgumentException('Must have at least one floor');
         }
 
         $highestFloor = $floors[0];
-        $lowestFloor = $floors[count($floors)-1];
+        $lowestFloor = $floors[count($floors) - 1];
         $highestFloorNameLength = strlen((string) $highestFloor);
         $lowestFloorNameLength = strlen((string) $lowestFloor);
         return max($highestFloorNameLength, $lowestFloorNameLength);
-    }
-
-    public function printLiftForFloor(Lift $lift, int $floor): string
-    {
-        // TODO: Implement printLiftForFloor() method.
-        return '';
     }
 }

@@ -13,21 +13,20 @@ class LiftAndDoorPrinter implements LiftPrinter
         if ($lift->getFloor() === $floor) {
             return $this->printLift($lift, $floor);
         }
-        return ($lift->hasRequestForFloor($floor))
-                ? "  *" . str_pad("", strlen($lift->getId()))
-                : "   " . str_pad("", strlen($lift->getId()));
-
+        return $lift->hasRequestForFloor($floor)
+                ? '  *' . str_pad('', strlen($lift->getId()))
+                : '   ' . str_pad('', strlen($lift->getId()));
     }
 
     private function printLift(Lift $lift, int $floor): string
     {
         if ($lift->areDoorsOpen()) {
             return $lift->hasRequestForFloor($floor)
-                ? "]*" . $lift->getId() . "["
-                : " ]" . $lift->getId() . "[";
+                ? ']*' . $lift->getId() . '['
+                : ' ]' . $lift->getId() . '[';
         }
         return $lift->hasRequestForFloor($floor)
-            ? "[*" . $lift->getId() . "]"
-            : " [" . $lift->getId() . "]";
+            ? '[*' . $lift->getId() . ']'
+            : ' [' . $lift->getId() . ']';
     }
 }
