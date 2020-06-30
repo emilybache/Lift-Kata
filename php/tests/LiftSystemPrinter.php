@@ -59,10 +59,10 @@ class LiftSystemPrinter implements LiftPrinter
 
             // Add the lifts using the selected lift printer (with or without doors)
             $sb .= implode(
+                ' ',
                 array_map(function ($lift) use ($liftPrinter, $floor) {
                     return $liftPrinter->printLiftForFloor($lift, $floor);
-                }, $liftSystem->getLifts()),
-                ' '
+                }, $liftSystem->getLifts())
             );
 
             // put the floor number at both ends of the line to make it more readable when there are lots of lifts,
