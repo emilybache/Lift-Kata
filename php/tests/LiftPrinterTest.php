@@ -38,9 +38,9 @@ class LiftPrinterTest extends TestCase
         $liftC = new Lift('C', 2, [], true);
         $liftD = new Lift('D', 0, [0], false);
         $liftSystem = new LiftSystem(
-                [0, 1, 2, 3],
-                [$liftA, $liftB, $liftC, $liftD],
-                [new Call(1, Direction::DOWN())]
+            [0, 1, 2, 3],
+            [$liftA, $liftB, $liftC, $liftD],
+            [new Call(1, Direction::DOWN())]
         );
         Approvals::verifyString((new LiftSystemPrinter())->printWithDoors($liftSystem));
     }
@@ -54,15 +54,15 @@ class LiftPrinterTest extends TestCase
         $liftSVC = new Lift('SVC', 10, [0, -1], false);
         $liftF = new Lift('F', 8, [], false);
         $liftSystem = new LiftSystem(
-                [-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                [$liftA, $liftB, $liftC, $liftD, $liftSVC, $liftF],
-                [
-                    new Call(1, Direction::DOWN()),
-                    new Call(6, Direction::DOWN()),
-                    new Call(5, Direction::UP()),
-                    new Call(5, Direction::DOWN()),
-                    new Call(-1, Direction::UP()),
-                ]
+            [-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            [$liftA, $liftB, $liftC, $liftD, $liftSVC, $liftF],
+            [
+                new Call(1, Direction::DOWN()),
+                new Call(6, Direction::DOWN()),
+                new Call(5, Direction::UP()),
+                new Call(5, Direction::DOWN()),
+                new Call(-1, Direction::UP()),
+            ]
         );
         Approvals::verifyString((new LiftSystemPrinter())->printWithDoors($liftSystem));
     }
