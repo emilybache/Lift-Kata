@@ -1,0 +1,29 @@
+{
+    "name": "js-lift-kata",
+    "version": "1.0.0",
+    "description": "A js version of lift kata",
+    "main": "index.js",
+    "scripts": {
+        "tdd": "mocha -w",
+        "test": "mocha --color"
+    },
+    "keywords": [
+        "tdd",
+        "node",
+        "skeleton",
+        "test",
+        "approval"
+    ],
+    "author": "Ibai Imaz @ibaiimaz",
+    "license": "ISC",
+    "devDependencies": {
+        "approvals": "^4.0.0-beta.1",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-register": "^6.26.0",
+        "chai": "^4.2.0",
+        "mocha": "^5.2.0",
+        "sinon": "^7.2.2",
+        "sinon-chai": "^3.3.0"
+    },
+    "dependencies": {}
+}
