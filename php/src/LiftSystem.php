@@ -7,25 +7,15 @@ namespace Lift;
 class LiftSystem
 {
     /**
-     * @var array<int>
+     * @param int[] $floors
+     * @param Call[] $calls
+     * @param Lift[] $lifts
      */
-    private $floors;
-
-    /**
-     * @var array<Call>
-     */
-    private $calls;
-
-    /**
-     * @var array<Lift>
-     */
-    private $lifts;
-
-    public function __construct(array $floors, array $lifts, array $calls)
-    {
-        $this->floors = $floors;
-        $this->lifts = $lifts;
-        $this->calls = $calls;
+    public function __construct(
+        private array $floors,
+        private array $lifts,
+        private array $calls
+    ) {
     }
 
     public function getFloorsInDescendingOrder(): array
@@ -35,10 +25,7 @@ class LiftSystem
 
     public function getCallsForFloor(int $floor): array
     {
-        return array_filter($this->calls, function ($call) use ($floor) {
-            /** @var Call $call */
-            return $call->getFloor() === $floor;
-        });
+        return array_filter($this->calls, fn ($call) => /** @var Call $call */ $call->getFloor() === $floor);
     }
 
     public function getLifts(): array

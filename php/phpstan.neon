@@ -7,8 +7,8 @@ parameters:
         - src
         - tests
 
-    # The level 8 is the highest level
-    level: 8
+    # max is the highest level
+    level: max
 
     # Larstan recommendation:
     checkMissingIterableValueType: false
@@ -24,7 +24,12 @@ parameters:
             -
                 message: '#PHPDoc tag @method has invalid value#'
                 path: src\Direction.php
-
+            -
+                message: '#Constant Lift\\Direction\:\:UP is unused.#'
+                path: src\Direction.php
+            -
+                message: '#Constant Lift\\Direction\:\:DOWN is unused.#'
+                path: src\Direction.php
     # buggy
 
     # mixed

@@ -32,7 +32,6 @@ class LiftSystemPrinter implements LiftPrinter
 
     public function printLiftForFloor(Lift $lift, int $floor): string
     {
-        // TODO: Implement printLiftForFloor() method.
         return '';
     }
 
@@ -46,9 +45,7 @@ class LiftSystemPrinter implements LiftPrinter
             $sb .= $floorPadding;
             $sb .= (string) $floor;
 
-            $calls = implode(array_map(function ($call) {
-                return $this->printCallDirection($call);
-            }, $liftSystem->getCallsForFloor($floor)));
+            $calls = implode(array_map(fn ($call) => $this->printCallDirection($call), $liftSystem->getCallsForFloor($floor)));
 
             // if there are less than 2 calls on a floor we add padding to keep everything aligned
             $callPadding = $this->getWhitespace(2 - strlen($calls));
@@ -60,9 +57,7 @@ class LiftSystemPrinter implements LiftPrinter
             // Add the lifts using the selected lift printer (with or without doors)
             $sb .= implode(
                 ' ',
-                array_map(function ($lift) use ($liftPrinter, $floor) {
-                    return $liftPrinter->printLiftForFloor($lift, $floor);
-                }, $liftSystem->getLifts())
+                array_map(fn ($lift) => $liftPrinter->printLiftForFloor($lift, $floor), $liftSystem->getLifts())
             );
 
             // put the floor number at both ends of the line to make it more readable when there are lots of lifts,
