@@ -15,7 +15,7 @@ class LiftPrinterTest extends TestCase
 {
     public function testNoLifts(): void
     {
-        /** @var array<Integer> $floors */
+        /** @var array<integer> $floors */
         $floors = [0, 1, 2, 3];
         $lifts = [];
         $calls = [];

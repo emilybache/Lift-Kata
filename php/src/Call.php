@@ -6,20 +6,10 @@ namespace Lift;
 
 class Call
 {
-    /**
-     * @var int
-     */
-    private $floor;
-
-    /**
-     * @var Direction
-     */
-    private $direction;
-
-    public function __construct(int $floor, Direction $direction)
-    {
-        $this->floor = $floor;
-        $this->direction = $direction;
+    public function __construct(
+        private int $floor,
+        private Direction $direction
+    ) {
     }
 
     public function getDirection(): Direction

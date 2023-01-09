@@ -7,7 +7,7 @@ Lift Kata.
 
 The project uses:
 
-- [PHP 7.3 or 7.4 or 8.0+](https://www.php.net/downloads.php)
+- [PHP 8.0+](https://www.php.net/downloads.php)
 - [Composer](https://getcomposer.org)
 
 Recommended:
@@ -36,7 +36,7 @@ composer install
 Run the tests:
 
 ```shell script
-composer test
+composer tests
 ```
 
 ## Dependencies
@@ -73,14 +73,14 @@ PHPUnit is configured for testing, a composer script has been provided. To run t
 project run:
 
 ```shell script
-composer test
+composer tests
 ```
 
-On Windows a batch file has been created, like an alias on Linux/Mac (e.g. `alias pu="composer test"`), the same
-PHPUnit `composer test` can be run:
+On Windows a batch file has been created, like an alias on Linux/Mac (e.g. `alias pu="composer tests"`), the same
+PHPUnit `composer tests` can be run:
 
 ```shell script
-pu
+pu.bat
 ```
 
 ### Tests with Coverage Report
@@ -113,7 +113,7 @@ On Windows a batch file has been created, like an alias on Linux/Mac (e.g. `alia
 ECS `composer check-cs` can be run:
 
 ```shell script
-cc
+cc.bat
 ```
 
 ### Fix Code
@@ -128,7 +128,7 @@ On Windows a batch file has been created, like an alias on Linux/Mac (e.g. `alia
 ECS `composer fix-cs` can be run:
 
 ```shell script
-fc
+fc.bat
 ```
 
 ## Static Analysis
@@ -145,7 +145,7 @@ On Windows a batch file has been created, like an alias on Linux/Mac (e.g. `alia
 PHPStan `composer phpstan` can be run:
 
 ```shell script
-ps
+ps.bat
 ```
 
 ## Approval Tests
